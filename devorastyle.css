@@ -1,0 +1,433 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    line-height: 1.6;
+    color: #2D3748;
+    background: #FAFBFC;
+    min-height: 100vh;
+}
+
+/* Header */
+header {
+    background: #FFFFFF;
+    border-bottom: 1px solid #E2E8F0;
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #4A5568;
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #718096;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: #4A5568;
+}
+
+/* Main content */
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+/* Hero section */
+.hero {
+    text-align: center;
+    padding: 4rem 0;
+    border-bottom: 1px solid #E2E8F0;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 1rem;
+    letter-spacing: -1px;
+}
+
+.hero p {
+    font-size: 1.125rem;
+    color: #718096;
+    margin-bottom: 2rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    background: #4A5568;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid #4A5568;
+}
+
+.cta-button:hover {
+    background: #2D3748;
+    transform: translateY(-1px);
+}
+
+/* Products section */
+.products {
+    padding: 4rem 0;
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.product-card {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+    padding: 2rem;
+    transition: all 0.2s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border-color: #CBD5E0;
+}
+
+.product-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2D3748;
+    margin-bottom: 0.5rem;
+}
+
+.product-card p {
+    color: #718096;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2D3748;
+    margin-bottom: 1.5rem;
+}
+
+.buy-button {
+    display: block;
+    width: 100%;
+    padding: 0.75rem;
+    background: #4A5568;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    text-align: center;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: 1px solid #4A5568;
+}
+
+.buy-button:hover {
+    background: #2D3748;
+}
+
+/* Footer */
+footer {
+    background: #F7FAFC;
+    border-top: 1px solid #E2E8F0;
+    padding: 2rem 0;
+    text-align: center;
+    color: #718096;
+    margin-top: 4rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 0 1rem;
+    }
+    
+    .nav-links {
+        gap: 1.5rem;
+    }
+    
+    main {
+        padding: 0 1rem;
+    }
+    
+    .hero {
+        padding: 3rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .products {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+}
+
+/* Modern animations and effects */
+.hero h1 {
+    background: linear-gradient(135deg, #2D3748 0%, #4A5568 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.hero p {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.cta-button {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.4s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scroll animations */
+.product-card, .soon-card {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.product-card.visible, .soon-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Enhanced product cards */
+.section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.6s forwards;
+}
+
+.section-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #4A5568;
+    margin-bottom: 0.5rem;
+}
+
+.section-header p {
+    color: #718096;
+    font-size: 1rem;
+}
+
+.product-card.featured {
+    position: relative;
+    border: 1px solid #E2E8F0;
+    transition: all 0.3s ease;
+    max-width: 400px;
+    margin: 0 auto 3rem;
+}
+
+.product-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #4A5568;
+    color: white;
+    padding: 0.25rem 1rem;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.product-card.featured:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    border-color: #CBD5E0;
+}
+
+.lifetime {
+    font-size: 0.875rem;
+    color: #718096;
+    font-weight: 400;
+    margin-left: 0.5rem;
+}
+
+/* Coming soon section */
+.coming-soon {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s ease 0.8s forwards;
+}
+
+.coming-soon h3 {
+    text-align: center;
+    color: #4A5568;
+    margin-bottom: 2rem;
+    font-size: 1.25rem;
+}
+
+.soon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.soon-card {
+    background: #F7FAFC;
+    border: 1px dashed #CBD5E0;
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.soon-card:hover {
+    background: #EDF2F7;
+    transform: translateY(-2px);
+}
+
+.soon-placeholder {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.soon-card h4 {
+    color: #4A5568;
+    margin-bottom: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.soon-card p {
+    color: #718096;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+.status {
+    display: inline-block;
+    padding: 0.25rem 0.75rem;
+    background: #E2E8F0;
+    color: #4A5568;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Enhanced buttons */
+.cta-button, .buy-button {
+    background: linear-gradient(135deg, #4A5568 0%, #2D3748 100%);
+    border: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover, .buy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(45, 55, 72, 0.2);
+}
+
+.cta-button:active, .buy-button:active {
+    transform: translateY(0);
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+    /* Fix scroll animations on mobile */
+    .product-card, .soon-card {
+        opacity: 1;
+        transform: none;
+    }
+    
+    /* Fix coming soon grid for mobile */
+    .soon-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        max-width: 100%;
+    }
+    
+    .soon-card {
+        padding: 1.5rem;
+    }
+    
+    .product-card.featured {
+        margin: 0 auto 2rem;
+    }
+    
+    .coming-soon {
+        opacity: 1;
+        transform: none;
+    }
+    
+    /* Adjust hero animations for mobile */
+    .hero h1,
+    .hero p,
+    .cta-button {
+        opacity: 1;
+        transform: none;
+        animation: none;
+    }
+}
+
+/* Ensure animations work on devices that support them */
+@media (min-width: 769px) {
+    .hero h1 {
+        animation: fadeUp 0.8s ease forwards;
+    }
+    
+    .hero p {
+        animation: fadeUp 0.8s ease 0.2s forwards;
+    }
+    
+    .cta-button {
+        animation: fadeUp 0.8s ease 0.4s forwards;
+    }
+}
