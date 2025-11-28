@@ -3,71 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devora — Digital Goods</title>
+    <title>Devora — Digital Tools for Builders</title>
+
+    <!-- SEO -->
+    <meta name="description" content="Devora — high-quality offline developer tools. File converters, data utilities and productivity boosters.">
+    <meta name="keywords" content="Devora, developer tools, file converter, offline tools, CSV, JSON, YAML, XML">
+
+    <!-- Open Graph (social preview) -->
+    <meta property="og:title" content="Devora — Digital Tools for Builders">
+    <meta property="og:description" content="High-quality offline tools for developers and analysts. Build smarter.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="preview.png">
+    <meta property="og:url" content="https://devoraofficial.github.io/devora-website/">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="devorastyle.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
 <body>
     <header>
-        <nav>
+        <nav class="navbar" aria-label="Main navigation">
             <a href="#" class="logo">Devora</a>
-            <div class="nav-links">
-                <a href="#products">Products</a>
-                <a href="mailto:DevoraGroup@proton.me" onclick="return confirm('This will open your email application. Continue?')">Contact</a>
-            </div>
+
+            <ul class="nav-links">
+                <li><a href="#products">Products</a></li>
+                <li>
+                    <a href="mailto:DevoraGroup@proton.me" 
+                       onclick="return confirm('This will open your email application. Continue?')">
+                        Contact
+                    </a>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
+    <main role="main">
+        <!-- HERO SECTION -->
+        <section class="hero" id="hero">
             <h1>Code Less. Create More.</h1>
-            <p>Powerful building blocks for your next big thing</p>
+            <p>Powerful building blocks for your next big thing.</p>
             <a href="#products" class="cta-button">Build Smarter</a>
         </section>
 
-<section class="products" id="products">
-    <div class="section-header">
-        <h2>Current Focus</h2>
-        <p>A powerful tool to elevate your workflow</p>
-    </div>
-    
-    <div class="product-card featured">
-        <div class="product-badge">Featured</div>
-        <h3>Devora Format</h3>
-        <p><strong>Upgrade your toolkit for less than a business lunch.</strong> Professional file conversion with enterprise privacy for $9. The smartest investment in your workflow.</p>
-        <div class="feature-list">
-            <div class="feature-item">CSV • JSON • YAML • XML • SQL</div>
-            <div class="feature-item">Excel support</div>
-            <div class="feature-item">Batch conversion</div>
-            <div class="feature-item">Data visualization</div>
-            <div class="feature-item">100% offline</div>
-        </div>
-        <div class="price">$9 <span class="lifetime">Lifetime access</span></div>
-        <a href="#" class="buy-button">Get Started</a>
-    </div>
-    
-    <div class="coming-soon">
-        <h3>Coming Soon</h3>
-        <div class="soon-grid">
-            <div class="soon-card">
-                <div class="soon-placeholder">🚀</div>
-                <h4>Devora Data</h4>
-                <p>Desktop app for CSV, JSON & YAML analysis. Works completely offline - your data never leaves your computer.</p>
-                <div class="status">In Development</div>
+        <!-- PRODUCTS SECTION -->
+        <section class="products" id="products" aria-labelledby="products-heading">
+            <div class="section-header">
+                <h2 id="products-heading">Current Focus</h2>
+                <p>A powerful tool to elevate your workflow</p>
             </div>
-            <div class="soon-card">
-                <div class="soon-placeholder">🚧</div>
-                <h4>Future Solutions</h4>
-                <p>Tools shaped by real user workflows</p>
-                <div class="status">In Research</div>
-            </div>
-        </div>
-    </div>
-</section>
+
+            <article class="product-card featured" aria-label="Devora Format">
+                <span class="product-badge">Featured</span>
+
+                <h3>Devora Format</h3>
+
+                <p>
+                    <strong>Upgrade your toolkit for less than a business lunch.</strong>
+                    Professional file conversion with enterprise privacy for $9.
+                    The smartest investment in your workflow.
+                </p>
+
+                <ul class="feature-list">
+                    <li class="feature-item">CSV • JSON • YAML • XML • SQL</li>
+                    <li class="feature-item">Excel support</li>
+                    <li class="feature-item">Batch conversion</li>
+                    <li class="feature-item">Data visualization</li>
+                    <li class="feature-item">100% offline</li>
+                </ul>
+
+                <div class="price">
+                    $9 <span class="lifetime">Lifetime access</span>
+                </div>
+
+                <a href="#" class="buy-button">Get Started</a>
+            </article>
+
+            <!-- COMING SOON -->
+            <section class="coming-soon" id="coming-soon">
+                <h3>Coming Soon</h3>
+
+                <div class="soon-grid">
+                    <article class="soon-card">
+                        <div class="soon-placeholder" aria-hidden="true">🚀</div>
+                        <h4>Devora Data</h4>
+                        <p>
+                            Desktop app for CSV, JSON & YAML analysis.
+                            Works completely offline — your data never leaves your computer.
+                        </p>
+                        <div class="status">In Development</div>
+                    </article>
+
+                    <article class="soon-card">
+                        <div class="soon-placeholder" aria-hidden="true">🚧</div>
+                        <h4>Future Solutions</h4>
+                        <p>Tools shaped by real user workflows.</p>
+                        <div class="status">In Research</div>
+                    </article>
+                </div>
+            </section>
+        </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 DevoraGroup</p>
+        <div class="footer-container">
+            <div class="footer-col">
+                <a href="#" class="logo">Devora</a>
+                <p>Powerful tools for modern developers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Links</h4>
+                <a href="#products">Products</a>
+                <a href="mailto:DevoraGroup@proton.me">Contact</a>
+                <a href="#">Privacy</a>
+            </div>
+            <div class="footer-col">
+                <h4>Follow</h4>
+                <a href="https://github.com/devoraofficial" target="_blank">GitHub</a>
+                <a href="#">LinkedIn</a>
+            </div>
+        </div>
+        <p class="footer-bottom">&copy; 2025 DevoraGroup</p>
     </footer>
 
     <script src="animations.js"></script>
