@@ -46,3 +46,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// Modal
+const modal = document.getElementById("privacy-modal");
+const privacyLink = document.querySelector('a[href="#privacy"]'); // мы потом изменим ссылку на футере
+const closeBtn = modal.querySelector(".close");
+
+// открыть модалку по клику
+privacyLink.addEventListener("click", function(e) {
+  e.preventDefault();
+  modal.style.display = "block";
+});
+
+// закрыть модалку по кнопке
+closeBtn.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
+// закрыть модалку кликом по фону
+window.addEventListener("click", function(e) {
+  if (e.target === modal) modal.style.display = "none";
+});
