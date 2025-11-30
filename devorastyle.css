@@ -71,7 +71,7 @@ header {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-primary-dark); /* Сделал видимым на светлом фоне */
+    color: var(--color-primary-dark); /* Made visible on a light background */
     text-decoration: none;
     letter-spacing: -0.5px;
 }
@@ -105,7 +105,7 @@ main {
 }
 
 .hero {
-    text-align: center;
+    text-align: left;
     padding: 4rem 0;
     border-bottom: 1px solid var(--color-accent);
 }
@@ -126,7 +126,7 @@ main {
 .hero p {
     font-size: 1.125rem;
     max-width: 500px;
-    margin: 1rem auto 2rem auto;
+    margin: 1rem 0 2rem 0;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 0.8s ease 0.2s forwards;
@@ -152,6 +152,58 @@ main {
 .cta-button:hover {
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(45,55,72,0.2);
+}
+
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem; /* can leave it as is or change it a little */
+}
+
+.hero-content {
+    max-width: 50%; /* text on the left */
+}
+
+.hero-visual {
+    max-width: 40%; /* visual block on the right */
+    display: flex;
+    justify-content: center;
+}
+
+/* ===============================
+   HERO BLOCKS ANIMATION
+================================ */
+.block-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 90px);
+    grid-template-rows: repeat(2, 90px);
+    gap: 30px;
+    perspective: 600px;
+}
+
+/* wrapper for appearance animation */
+.block-wrapper {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s ease forwards;
+}
+
+.block-wrapper:nth-child(1) { animation-delay: 0.6s; }
+.block-wrapper:nth-child(2) { animation-delay: 0.8s; }
+.block-wrapper:nth-child(3) { animation-delay: 1s; }
+.block-wrapper:nth-child(4) { animation-delay: 1.2s; }
+
+.block {
+    width: 110px;
+    height: 110px;
+    border-radius: 24px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.block:hover {
+    transform: rotateY(15deg) rotateX(15deg) scale(1.1);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
 
 /* ===============================
@@ -264,7 +316,8 @@ main {
     opacity: 0;
     transform: translateY(20px);
     animation: fadeUp 0.8s ease 0.8s forwards;
-    margin-top: 3rem;
+    margin-top: 0em;
+    width: 100%
 }
 
 .coming-soon h3 {
@@ -323,7 +376,7 @@ main {
    FOOTER
 ================================ */
 footer {
-    background: #1A202C; /* тёмный фон */
+    background: #1A202C;
     color: #CBD5E0;
     padding: 3rem 2rem 1.5rem;
     font-size: 0.95rem;
@@ -494,4 +547,3 @@ footer {
 .close:hover {
   color: var(--color-primary);
 }
-
