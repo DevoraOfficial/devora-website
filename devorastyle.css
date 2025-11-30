@@ -507,6 +507,35 @@ footer {
         transform: none;
         animation: none;
     }
+
+    /* ===== HERO BLOCKS MOBILE ===== */
+    .hero {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .hero-visual {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .block-grid {
+        grid-template-columns: repeat(2, 60px);
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+
+    .block {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
+    }
 }
 
 .modal {
