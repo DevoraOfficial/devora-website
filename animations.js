@@ -13,21 +13,23 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ----- Scroll animations -----
-    const animatedElements = document.querySelectorAll('.product-card, .soon-card, .section-header, .coming-soon');
+    const animatedElements = document.querySelectorAll(
+        '.product-card, .soon-card, .section-header, .coming-soon, .block'
+    );
     const isMobile = window.innerWidth <= 768;
 
     if (isMobile) {
-        // Показываем элементы сразу на мобильных
+        // На мобильных показываем сразу
         animatedElements.forEach(el => el.classList.add('visible'));
         return;
     }
 
-    // Создаём один IntersectionObserver
+    // IntersectionObserver для всех элементов
     const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('visible');
-                obs.unobserve(entry.target); // Отключаем наблюдение после анимации
+                obs.unobserve(entry.target);
             }
         });
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
@@ -47,23 +49,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// Modal
+// ----- Modal -----
 const modal = document.getElementById("privacy-modal");
-const privacyLink = document.querySelector('a[href="#privacy"]'); // мы потом изменим ссылку на футере
+const privacyLink = document.querySelector('a[href="#privacy"]');
 const closeBtn = modal.querySelector(".close");
 
-// открыть модалку по клику
+// открыть модалку
 privacyLink.addEventListener("click", function(e) {
   e.preventDefault();
   modal.style.display = "block";
 });
 
-// закрыть модалку по кнопке
+// закрыть модалку
 closeBtn.addEventListener("click", function() {
   modal.style.display = "none";
 });
 
-// закрыть модалку кликом по фону
+// закрыть кликом по фону
 window.addEventListener("click", function(e) {
   if (e.target === modal) modal.style.display = "none";
 });
