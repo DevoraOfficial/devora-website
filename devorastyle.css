@@ -2,14 +2,14 @@
    VARIABLES & BASE STYLES
 ================================ */
 :root {
-    --color-bg: #FAFBFC;
-    --color-primary: #4A5568;
-    --color-primary-dark: #2D3748;
-    --color-secondary: #718096;
-    --color-accent: #E2E8F0;
-    --color-accent-light: #F7FAFC;
-    --color-text: #2D3748;
-    --color-text-light: #718096;
+    --color-bg: #0F172A;
+    --color-primary: #7C9CFF;
+    --color-primary-dark: #5B7CFA;
+    --color-secondary: #94A3B8;
+    --color-accent: rgba(148,163,184,0.15);
+    --color-accent-light: rgba(255,255,255,0.04);
+    --color-text: #E2E8F0;
+    --color-text-light: #94A3B8;
 
     --font-base: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     --font-heading: 'Segoe UI', Roboto, sans-serif;
@@ -31,9 +31,9 @@ body {
     color: var(--color-text);
     background: radial-gradient(
         circle at 20% 20%, 
-        #F1F5F9 0%, 
-        #E2E8F0 40%, 
-        #F8FAFC 100%
+        #1E293B 0%, 
+        #0F172A 50%, 
+        #0B1120 100%
     );
     min-height: 100vh;
 }
@@ -43,7 +43,7 @@ body {
 ================================ */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    color: var(--color-primary-dark);
+    color: #F1F5F9;
     margin-bottom: 0.5rem;
     line-height: 1.2;
 }
@@ -57,8 +57,8 @@ p {
    HEADER & NAVIGATION
 ================================ */
 header {
-    background: var(--color-accent-light);
-    border-bottom: 1px solid var(--color-accent);
+    background: rgba(15,23,42,0.7);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     position: sticky;
     top: 0;
     z-index: 100;
@@ -76,7 +76,7 @@ header {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-primary-dark);
+    color: #F8FAFC;
     text-decoration: none;
     letter-spacing: -0.5px;
 }
@@ -96,7 +96,7 @@ header {
 
 .nav-links a:hover,
 .nav-links a:focus {
-    color: var(--color-primary-dark);
+    color: var(--color-primary);
     transform: translateY(-2px);
 }
 
@@ -111,12 +111,11 @@ main {
 
 .hero {
     text-align: left;
-    padding: 4rem 0;
-    border-bottom: 1px solid var(--color-accent);
+    padding: 4rem 2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 4rem 2rem;
 }
 
 .hero-content {
@@ -133,7 +132,7 @@ main {
     font-size: 3rem;
     font-weight: 700;
     letter-spacing: -1px;
-    background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
+    background: linear-gradient(135deg, #FFFFFF, #A5B4FC);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -166,12 +165,12 @@ main {
     transform: translateY(20px);
     animation: fadeUp 0.8s ease 0.4s forwards;
     transition: all var(--transition);
-    box-shadow: 0 8px 30px rgba(45,55,72,0.15);
+    box-shadow: 0 8px 30px rgba(124,156,255,0.25);
 }
 
 .cta-button:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 12px 40px rgba(45,55,72,0.25);
+    box-shadow: 0 12px 40px rgba(124,156,255,0.4);
 }
 
 /* ===============================
@@ -200,12 +199,14 @@ main {
     width: 110px;
     height: 110px;
     border-radius: 24px;
+    background: linear-gradient(145deg, #1E293B, #0F172A);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 10px 20px rgba(0,0,0,0.4);
 }
 
 .block:hover {
     transform: rotateY(15deg) rotateX(15deg) scale(1.1);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.6);
 }
 
 /* ===============================
@@ -219,9 +220,9 @@ main {
 }
 
 .product-card {
-    background: rgba(255,255,255,0.85);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(200,213,224,0.6);
+    background: rgba(30,41,59,0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.05);
     border-radius: var(--radius);
     padding: 2rem;
     transition: all var(--transition);
@@ -237,8 +238,8 @@ main {
 
 .product-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    border-color: #CBD5E0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border-color: rgba(124,156,255,0.4);
 }
 
 .product-card.featured {
@@ -284,6 +285,7 @@ main {
     font-size: 1.5rem;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    color: #F1F5F9;
 }
 
 .lifetime {
@@ -309,7 +311,7 @@ main {
 
 .buy-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45,55,72,0.2);
+    box-shadow: 0 6px 18px rgba(124,156,255,0.3);
 }
 
 /* ===============================
@@ -339,8 +341,8 @@ main {
 }
 
 .soon-card {
-    background: var(--color-accent-light);
-    border: 1px dashed var(--color-accent);
+    background: rgba(30,41,59,0.5);
+    border: 1px dashed rgba(255,255,255,0.1);
     border-radius: var(--radius);
     padding: 2rem;
     text-align: center;
@@ -356,7 +358,7 @@ main {
 }
 
 .soon-card:hover {
-    background: #EDF2F7;
+    background: rgba(30,41,59,0.7);
     transform: translateY(-2px);
 }
 
@@ -368,8 +370,8 @@ main {
 .status {
     display: inline-block;
     padding: 0.25rem 0.75rem;
-    background: var(--color-accent);
-    color: var(--color-primary);
+    background: rgba(124,156,255,0.2);
+    color: #C7D2FE;
     border-radius: 12px;
     font-size: 0.75rem;
     font-weight: 500;
@@ -379,8 +381,8 @@ main {
    FOOTER
 ================================ */
 footer {
-    background: #1A202C;
-    color: #CBD5E0;
+    background: #0B1120;
+    color: #94A3B8;
     padding: 3rem 2rem 1.5rem;
     font-size: 0.95rem;
 }
@@ -400,21 +402,21 @@ footer {
 }
 
 .footer-col h4 {
-    color: #EDF2F7;
+    color: #F1F5F9;
     margin-bottom: 0.75rem;
     font-size: 1rem;
     font-weight: 600;
 }
 
 .footer-col p {
-    color: #A0AEC0;
+    color: #94A3B8;
     margin-top: 0.5rem;
     line-height: 1.5;
 }
 
 .footer-col a {
     display: block;
-    color: #CBD5E0;
+    color: #94A3B8;
     text-decoration: none;
     margin-bottom: 0.5rem;
     transition: color 0.2s ease, transform 0.2s ease;
@@ -427,7 +429,7 @@ footer {
 
 .footer-bottom {
     text-align: center;
-    border-top: 1px solid #2D3748;
+    border-top: 1px solid rgba(255,255,255,0.1);
     padding-top: 1rem;
     font-size: 0.85rem;
     color: #718096;
@@ -541,15 +543,16 @@ footer {
 }
 
 .modal-content {
-  background-color: #fff;
+  background-color: #1E293B;
   margin: 5% auto;
   padding: 2rem;
   max-width: 700px;
   border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
   position: relative;
   font-size: 0.95rem;
   line-height: 1.5;
+  color: var(--color-text);
 }
 
 .close {
@@ -558,10 +561,10 @@ footer {
   right: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
-  color: var(--color-primary-dark);
+  color: var(--color-primary);
   transition: color 0.2s ease;
 }
 
 .close:hover {
-  color: var(--color-primary);
+  color: var(--color-primary-dark);
 }
