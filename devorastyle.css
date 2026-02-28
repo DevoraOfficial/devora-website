@@ -29,7 +29,12 @@ body {
     font-family: var(--font-base);
     line-height: 1.6;
     color: var(--color-text);
-    background-color: var(--color-bg);
+    background: radial-gradient(
+        circle at 20% 20%, 
+        #F1F5F9 0%, 
+        #E2E8F0 40%, 
+        #F8FAFC 100%
+    );
     min-height: 100vh;
 }
 
@@ -71,7 +76,7 @@ header {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--color-primary-dark); /* Made visible on a light background */
+    color: var(--color-primary-dark);
     text-decoration: none;
     letter-spacing: -0.5px;
 }
@@ -108,10 +113,24 @@ main {
     text-align: left;
     padding: 4rem 0;
     border-bottom: 1px solid var(--color-accent);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 4rem 2rem;
+}
+
+.hero-content {
+    max-width: 50%;
+}
+
+.hero-visual {
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
 }
 
 .hero h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     font-weight: 700;
     letter-spacing: -1px;
     background: linear-gradient(135deg, var(--color-primary-dark), var(--color-primary));
@@ -147,28 +166,12 @@ main {
     transform: translateY(20px);
     animation: fadeUp 0.8s ease 0.4s forwards;
     transition: all var(--transition);
+    box-shadow: 0 8px 30px rgba(45,55,72,0.15);
 }
 
 .cta-button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(45,55,72,0.2);
-}
-
-.hero {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 4rem 2rem; /* can leave it as is or change it a little */
-}
-
-.hero-content {
-    max-width: 50%; /* text on the left */
-}
-
-.hero-visual {
-    max-width: 40%; /* visual block on the right */
-    display: flex;
-    justify-content: center;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(45,55,72,0.25);
 }
 
 /* ===============================
@@ -182,7 +185,6 @@ main {
     perspective: 600px;
 }
 
-/* wrapper for appearance animation */
 .block-wrapper {
     opacity: 0;
     transform: translateY(30px);
@@ -217,8 +219,9 @@ main {
 }
 
 .product-card {
-    background: #fff;
-    border: 1px solid var(--color-accent);
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(200,213,224,0.6);
     border-radius: var(--radius);
     padding: 2rem;
     transition: all var(--transition);
@@ -430,19 +433,6 @@ footer {
     color: #718096;
 }
 
-/* Responsive Footer */
-@media (max-width: 768px) {
-    .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-    
-    .footer-col {
-        margin-bottom: 1.5rem;
-    }
-}
-
 /* ===============================
    ANIMATIONS
 ================================ */
@@ -467,6 +457,9 @@ footer {
 
     .hero {
         padding: 3rem 0;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
     }
 
     .hero h1 {
@@ -481,6 +474,28 @@ footer {
         transform: none;
         opacity: 1;
         animation: none;
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    .hero-visual {
+        max-width: 100%;
+        justify-content: center;
+    }
+
+    .block-grid {
+        grid-template-columns: repeat(2, 60px);
+        grid-template-rows: auto;
+        gap: 15px;
+    }
+
+    .block {
+        width: 60px;
+        height: 60px;
+        border-radius: 16px;
     }
 
     .products {
@@ -507,47 +522,21 @@ footer {
         transform: none;
         animation: none;
     }
-
-    /* ===== HERO BLOCKS MOBILE ===== */
-    .hero {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
-
-    .hero-content {
-        max-width: 100%;
-        margin-bottom: 2rem;
-    }
-
-    .hero-visual {
-        max-width: 100%;
-        justify-content: center;
-    }
-
-    .block-grid {
-        grid-template-columns: repeat(2, 60px);
-        grid-template-rows: auto;
-        gap: 15px;
-    }
-
-    .block {
-        width: 60px;
-        height: 60px;
-        border-radius: 16px;
-    }
 }
 
+/* ===============================
+   MODAL
+================================ */
 .modal {
-  display: none; /* hidden by default */
+  display: none;
   position: fixed; 
-  z-index: 1000; /* on top of the entire site */
+  z-index: 1000;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.6); /* translucent background */
+  background-color: rgba(0,0,0,0.6);
   transition: opacity 0.3s ease;
 }
 
