@@ -4,11 +4,9 @@
     <meta charset="UTF-8">
     <title>Support Devora</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta name="description" content="Support Devora — open-source privacy tools funded by the community.">
 
     <link rel="stylesheet" href="devorastyle.css">
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 <body>
@@ -28,23 +26,21 @@
     <section class="donate-hero">
         <h1>Support Devora 🤍</h1>
         <p>
-            Devora is built openly and remains free for everyone.  
+            Devora is built openly and remains free for everyone.
             If you believe in privacy-first software, you can support its growth.
         </p>
     </section>
 
     <section class="donate-methods">
-
-        <!-- Crypto -->
         <div class="donate-card">
-            <h3>Crypto</h3>
-            <p>Donate using your preferred cryptocurrency.</p>
+            <h3>Crypto Donation</h3>
+            <p>Select a network and send funds directly to the wallet address.</p>
 
             <div class="donate-options">
-                <button class="donate-option">USDT (TRC20 – Tron)</button>
-                <button class="donate-option">USDT (ERC20 – Ethereum)</button>
-                <button class="donate-option">Bitcoin (BTC)</button>
-                <button class="donate-option">Ethereum (ETH)</button>
+                <button class="donate-option" data-key="usdt_trc20">USDT (TRC20 – Tron)</button>
+                <button class="donate-option" data-key="usdt_erc20">USDT (ERC20 – Ethereum)</button>
+                <button class="donate-option" data-key="btc">Bitcoin (BTC)</button>
+                <button class="donate-option" data-key="eth">Ethereum (ETH)</button>
             </div>
 
             <div id="crypto-details" class="crypto-details">
@@ -52,7 +48,7 @@
 
                 <div class="crypto-box">
                     <input type="text" id="crypto-address" readonly>
-                    <button class="copy-button" onclick="copyAddress()">Copy</button>
+                    <button class="copy-button" id="copy-btn">Copy</button>
                 </div>
 
                 <div id="qrcode" class="qr-wrapper"></div>
@@ -62,31 +58,10 @@
                 </p>
             </div>
 
-            <div id="crypto-details" class="crypto-details" style="display:none;">
-                <p id="crypto-label"></p>
-                <input type="text" id="crypto-address" readonly>
-                <button onclick="copyAddress()">Copy</button>
-            </div>
-
             <p class="donate-note">
-                Funds can be converted to USDT for project sustainability.
+                Direct crypto donations. No intermediaries. No processing fees.
             </p>
         </div>
-
-        <!-- Fiat -->
-        <div class="donate-card">
-            <h3>Card / Fiat</h3>
-            <p>Donate using debit or credit card.</p>
-
-            <div class="donate-options">
-                <button class="donate-option primary">Donate with Card</button>
-            </div>
-
-            <p class="donate-note">
-                Securely processed via external payment provider.
-            </p>
-        </div>
-
     </section>
 
 </main>
@@ -102,52 +77,58 @@
 </footer>
 
 <script>
-const addresses = {
-    usdt_trc20: "TRsGXfLj8LibEeTq5ixFjVgPysVY7z522N",
-    usdt_erc20: "0x618E994dbA9349E1E7a9DBA85332f5680c20d76d",
-    btc: "bc1q3dsgjjlws4jw872jgcj663frqjdk2d4ugmy52h",
-    eth: "0x618E994dbA9349E1E7a9DBA85332f5680c20d76d"
-};
+document.addEventListener("DOMContentLoaded", function () {
 
-const buttons = document.querySelectorAll(".donate-option");
-let qr;
+    const addresses = {
+        usdt_trc20: "TRsGXfLj8LibEeTq5ixFjVgPysVY7z522N",
+        usdt_erc20: "0x618E994dbA9349E1E7a9DBA85332f5680c20d76d",
+        btc: "bc1q3dsgjjlws4jw872jgcj663frqjdk2d4ugmy52h",
+        eth: "0x618E994dbA9349E1E7a9DBA85332f5680c20d76d"
+    };
 
-buttons.forEach(button => {
-    button.addEventListener("click", () => {
-        let text = button.innerText.toLowerCase();
-        let key = "";
+    const buttons = document.querySelectorAll(".donate-option");
+    const details = document.getElementById("crypto-details");
+    const label = document.getElementById("crypto-label");
+    const addressInput = document.getElementById("crypto-address");
+    const qrContainer = document.getElementById("qrcode");
+    const copyBtn = document.getElementById("copy-btn");
 
-        if (text.includes("trc20")) key = "usdt_trc20";
-        if (text.includes("erc20")) key = "usdt_erc20";
-        if (text.includes("btc")) key = "btc";
-        if (text.includes("eth")) key = "eth";
+    let qrInstance = null;
 
-        const address = addresses[key];
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
 
-        document.getElementById("crypto-label").innerText = button.innerText;
-        document.getElementById("crypto-address").value = address;
-        document.getElementById("crypto-details").style.display = "block";
+            // Remove active state
+            buttons.forEach(btn => btn.style.background = "rgba(255,255,255,0.03)");
 
-        // Очистка старого QR
-        document.getElementById("qrcode").innerHTML = "";
+            // Highlight selected
+            this.style.background = "rgba(124,156,255,0.25)";
 
-        // Генерация нового QR
-        qr = new QRCode(document.getElementById("qrcode"), {
-            text: address,
-            width: 180,
-            height: 180
+            const key = this.getAttribute("data-key");
+            const address = addresses[key];
+
+            label.innerText = this.innerText;
+            addressInput.value = address;
+            details.style.display = "block";
+
+            // Clear old QR
+            qrContainer.innerHTML = "";
+
+            qrInstance = new QRCode(qrContainer, {
+                text: address,
+                width: 180,
+                height: 180
+            });
         });
     });
+
+    copyBtn.addEventListener("click", function () {
+        navigator.clipboard.writeText(addressInput.value);
+        copyBtn.innerText = "Copied!";
+        setTimeout(() => copyBtn.innerText = "Copy", 1500);
+    });
+
 });
-
-function copyAddress() {
-    const input = document.getElementById("crypto-address");
-    navigator.clipboard.writeText(input.value);
-
-    const btn = document.querySelector(".copy-button");
-    btn.innerText = "Copied!";
-    setTimeout(() => btn.innerText = "Copy", 1500);
-}
 </script>
 
 </body>
